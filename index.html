@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080d21" />
+  <meta name="description" content="ASTRALIS — Trần Bảo Ngọc's personal workspace." />
+  <title>ASTRALIS — Trần Bảo Ngọc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="starfield" aria-hidden="true"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="ASTRALIS dashboard"><span class="brand-mark">A<span>✦</span></span><span>ASTRALIS</span></a>
+      <div class="side-label" data-i18n="workspace">WORKSPACE</div>
+      <nav class="nav-group" aria-label="Workspace">
+        <a class="nav-link active" href="#dashboard" data-page="dashboard"><span class="nav-glyph">◈</span><span data-i18n="dashboard">Dashboard</span></a>
+        <a class="nav-link" href="#tasks" data-page="tasks"><span class="nav-glyph">☷</span><span data-i18n="tasks">Tasks</span><span class="nav-count" id="nav-task-count"></span></a>
+        <a class="nav-link" href="#projects" data-page="projects"><span class="nav-glyph">▱</span><span data-i18n="projects">Projects</span></a>
+        <a class="nav-link" href="#notes" data-page="notes"><span class="nav-glyph">▤</span><span data-i18n="notes">Notes</span></a>
+      </nav>
+      <div class="side-label side-label-spaced" data-i18n="planning">PLANNING</div>
+      <nav class="nav-group" aria-label="Planning">
+        <a class="nav-link" href="#goals" data-page="goals"><span class="nav-glyph">◎</span><span data-i18n="goals">Goals</span></a>
+        <a class="nav-link" href="#research" data-page="research"><span class="nav-glyph">⌕</span><span data-i18n="research">Research</span></a>
+        <a class="nav-link" href="#progress" data-page="progress"><span class="nav-glyph">⌁</span><span data-i18n="progress">Progress</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="profile-mini"><span class="avatar">N</span><span><b>Trần Bảo Ngọc</b><small data-i18n="financeStudent">Finance &amp; Accounting student</small></span></div>
+        <div class="sidebar-foot">✦ <span data-i18n="privateDesk">Your private desk</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Open navigation">☰</button>
+        <div class="crumb"><span data-i18n="myWorkspace">My workspace</span><span class="crumb-slash">/</span><b id="crumb-current">Dashboard</b></div>
+        <div class="top-actions">
+          <span class="today-date" id="today-date"></span>
+          <label class="language-select"><span aria-hidden="true">◎</span><select id="ui-language" aria-label="Interface language"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="fr">Français</option><option value="es">Español</option><option value="zh">简体中文</option><option value="hi">हिन्दी</option></select></label>
+          <button class="icon-btn theme-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="page active" id="page-dashboard">
+          <div class="hero-row">
+            <div><div class="eyebrow"><span class="eyebrow-star">✦</span> <span id="date-eyebrow"></span></div><h1 data-i18n="welcome">Welcome back, Trần Bảo Ngọc</h1><p class="hero-sub" data-i18n="heroSub">A quiet space for everything you are building.</p><div class="role-line"><span class="role-dot"></span><span data-i18n="financeStudent">Finance &amp; Accounting student</span></div></div>
+            <div class="hero-orbit" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit-core">A</span><i class="orbit-star star-a">✦</i><i class="orbit-star star-b">✧</i><i class="orbit-star star-c">·</i></div>
+          </div>
+
+          <div class="overview-grid" id="overview-grid"></div>
+
+          <div class="section-head"><div><div class="eyebrow" data-i18n="commandCenter">YOUR COMMAND CENTER</div><h2 data-i18n="mainWorkspace">Main workspace</h2></div><button class="quiet-link" data-go="tasks" data-i18n="viewTasks">View tasks <span>↗</span></button></div>
+          <div class="workspace-grid" id="workspace-grid"></div>
+
+          <div class="lower-grid">
+            <article class="panel quick-panel">
+              <div class="panel-heading"><div><div class="eyebrow" data-i18n="quickEntries">QUICK ENTRIES</div><h2 data-i18n="openDesk">Open a desk</h2></div><span class="panel-orb">✧</span></div>
+              <div class="quick-entry-list" id="quick-entry-list"></div>
+            </article>
+            <article class="panel activity-panel">
+              <div class="panel-heading"><div><div class="eyebrow" data-i18n="recentActivity">RECENT ACTIVITY</div><h2 data-i18n="recently">Recently</h2></div><button class="quiet-link" data-go="progress" data-i18n="allActivity">All activity <span>↗</span></button></div>
+              <div id="recent-activity" class="activity-list"></div>
+            </article>
+          </div>
+          <div class="quick-capture-wrap"><div class="capture-label"><span class="pulse"></span><span data-i18n="quickCapture">QUICK CAPTURE</span></div><div class="quick-capture" aria-label="Quick input actions"><button class="capture-action" data-create="task"><span class="capture-icon">＋</span><span data-i18n="taskAction">Task</span><span class="capture-arrow">↗</span></button><button class="capture-action" data-create="research"><span class="capture-icon">⌕</span><span data-i18n="researchAction">Research</span><span class="capture-arrow">↗</span></button><button class="capture-action" data-create="revision"><span class="capture-icon">↺</span><span data-i18n="revisionAction">Revision</span><span class="capture-arrow">↗</span></button></div></div>
+          <footer class="app-footer"><span>ASTRALIS</span><span data-i18n="footerLocal">A personal workspace. Your data stays on this device.</span><span>✦</span></footer>
+        </section>
+
+        <section class="page" id="page-tasks">
+          <div class="page-title-row"><div><div class="eyebrow" data-i18n="keepMoving">MAKE ROOM TO MOVE</div><h1 data-i18n="tasks">Tasks</h1><p class="page-sub" data-i18n="tasksSub">One clear next step at a time.</p></div><button class="primary-btn" data-create="task"><span>＋</span><span data-i18n="newTask">New task</span></button></div>
+          <div class="toolbar"><label class="search-field"><span>⌕</span><input id="task-search" data-placeholder="searchTasks" placeholder="Search tasks…" /></label><select id="task-filter" aria-label="Filter tasks"><option value="all" data-i18n="allTasks">All tasks</option><option value="open" data-i18n="openTasks">Open</option><option value="done" data-i18n="doneTasks">Completed</option></select></div>
+          <div class="data-list panel" id="task-list"></div>
+        </section>
+
+        <section class="page" id="page-projects">
+          <div class="page-title-row"><div><div class="eyebrow" data-i18n="buildWithIntent">BUILD WITH INTENT</div><h1 data-i18n="projects">Projects</h1><p class="page-sub" data-i18n="projectsSub">Personal and university work, side by side.</p></div><button class="primary-btn" data-create="project"><span>＋</span><span data-i18n="newProject">New project</span></button></div>
+          <div class="toolbar"><label class="search-field"><span>⌕</span><input id="project-search" data-placeholder="searchProjects" placeholder="Search projects…" /></label></div><div class="card-grid" id="project-grid"></div>
+        </section>
+
+        <section class="page" id="page-notes">
+          <div class="page-title-row"><div><div class="eyebrow" data-i18n="thoughtsInOrbit">THOUGHTS IN ORBIT</div><h1 data-i18n="notes">Notes</h1><p class="page-sub" data-i18n="notesSub">A place to keep what matters.</p></div><button class="primary-btn" data-create="note"><span>＋</span><span data-i18n="newNote">New note</span></button></div>
+          <div class="toolbar"><label class="search-field"><span>⌕</span><input id="note-search" data-placeholder="searchNotes" placeholder="Search notes…" /></label></div><div class="note-grid" id="note-grid"></div>
+        </section>
+
+        <section class="page" id="page-goals">
+          <div class="page-title-row"><div><div class="eyebrow" data-i18n="futureYou">FOR THE FUTURE YOU</div><h1 data-i18n="goals">Goals</h1><p class="page-sub" data-i18n="goalsSub">Keep your intentions visible and editable.</p></div><button class="primary-btn" data-create="goal"><span>＋</span><span data-i18n="newGoal">New goal</span></button></div><div class="goal-grid" id="goal-grid"></div>
+        </section>
+
+        <section class="page" id="page-research">
+          <div class="page-title-row"><div><div class="eyebrow" data-i18n="keepSources">KEEP GOOD SOURCES CLOSE</div><h1 data-i18n="research">Research</h1><p class="page-sub" data-i18n="researchSub">Save useful sources and what you want to remember.</p></div><button class="primary-btn" data-create="research"><span>＋</span><span data-i18n="saveResearch">Save research</span></button></div><div class="toolbar"><label class="search-field"><span>⌕</span><input id="research-search" data-placeholder="searchResearch" placeholder="Search research…" /></label></div><div class="research-list panel" id="research-list"></div>
+        </section>
+
+        <section class="page" id="page-progress">
+          <div class="page-title-row"><div><div class="eyebrow" data-i18n="yourConstellation">YOUR CONSTELLATION</div><h1 data-i18n="progress">Progress</h1><p class="page-sub" data-i18n="progressSub">A record built from your own activity.</p></div><button class="primary-btn" data-create="achievement"><span>＋</span><span data-i18n="addAchievement">Add achievement</span></button></div><div class="progress-stats" id="progress-stats"></div><div class="progress-layout"><article class="panel"><div class="panel-heading"><div><div class="eyebrow" data-i18n="activityTrail">ACTIVITY TRAIL</div><h2 data-i18n="recentActivity">Recent activity</h2></div></div><div class="activity-list" id="progress-activity"></div></article><article class="panel"><div class="panel-heading"><div><div class="eyebrow" data-i18n="achievements">MILESTONES</div><h2 data-i18n="achievements">Achievements</h2></div></div><div id="achievement-list"></div></article></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" role="presentation"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div class="modal-kicker" id="modal-kicker">ASTRALIS</div><h2 id="modal-title"></h2><p class="modal-desc" id="modal-desc"></p><form id="entry-form"></form></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

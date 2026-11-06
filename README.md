@@ -4,13 +4,13 @@ A responsive personal workbench for organizing university work, tasks, projects,
 
 ## Interface
 
-The default interface is Vietnamese. The language menu offers Vietnamese, English, Korean, and Simplified Chinese. Light mode uses the requested baby-blue palette; dark mode is available from the top bar.
+The default interface is English. The language menu offers English, Vietnamese, Korean, and Simplified Chinese. Switching languages updates navigation, dashboard content, forms, placeholders, accessibility labels, feedback messages, and activity labels. Light mode uses the requested baby-blue palette; dark mode is available from the top bar.
 
 ## Features
 
 - Dashboard with four editable overview cards and a three-card workspace.
 - Create, edit, complete, search, and delete tasks; keep deadlines visible.
-- Organize projects, goals, notes, and research sources.
+- Create, edit, search, and delete notes; manage projects, goals, and research sources.
 - Record revisions and achievements, and review recent activity and progress.
 - Quick capture actions for Task, Research, and Revision, placed below the welcome area.
 - Responsive navigation for desktop and mobile.
